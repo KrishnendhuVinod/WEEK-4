@@ -1,0 +1,81 @@
+Plan Document for University Course Question-Answering System
+
+1. Introduction
+
+This program is designed to create an intelligent question-answering system for university course materials. It combines structured course data stored in SQLite with unstructured course content extracted from syllabus or textbook PDFs, indexed in a vector database (ChromaDB) to answer user questions efficiently.
+
+2. Objectives
+
+- Store and manage structured course information and associated questions using SQLite.
+- Extract textual content from syllabus or textbook PDFs.
+- Index extracted text in ChromaDB for semantic search and retrieval.
+- Allow users to query course content interactively.
+- Dynamically add new user questions to the database to build knowledge over time.
+
+3. Technologies Used
+
+- SQLite: Lightweight relational database for storing course and question metadata.
+- ChromaDB: Vector database to store and query semantic embeddings of course text.
+- PyPDF2: Python library to extract text from PDF files.
+- Python: Main programming language to implement the backend logic.
+
+4. Program Components and Functionality
+
+4.1 Database Setup (SQLite)
+
+- Create two tables:
+  - courses: Stores course information such as course name, code, year, semester, branch, course outcomes, and program outcomes.
+  - questions: Stores questions related to courses, linked by course_id.
+  - Insert sample course and question data if tables are empty.
+
+4.2 PDF Text Extraction
+
+- Extract text from user-provided syllabus or textbook PDFs.
+- Concatenate text from all PDF pages into a single string for processing.
+
+4.3 ChromaDB Integration
+
+- Initialize a ChromaDB client and create or get a collection named course_texts.
+- Split extracted PDF text into sentence chunks.
+- Add these chunks as documents to the ChromaDB collection, associating metadata and unique IDs.
+
+4.4 User Interaction and Question Handling
+
+- Prompt the user to input a PDF file path.
+- Extract and insert text into ChromaDB for querying.
+- Enter a loop to continuously prompt the user for questions.
+- For each question:
+  - Insert it into the SQLite database to maintain a record.
+  - Query ChromaDB to retrieve the most relevant chunks as answers.
+  - Display answers to the user.
+- Exit the loop when the user types "exit".
+- Close the SQLite connection at program termination.
+
+5. Workflow
+
+   1. Start Program
+   2. Setup SQLite database and create necessary tables.
+   3. Insert sample course and question data if none exist.
+   4. Setup ChromaDB client and collection.
+   5. User inputs syllabus/textbook PDF file path.
+   6. Extract text from PDF.
+   7. Split extracted text into chunks and insert into ChromaDB.
+   8. Repeat:
+      - Ask user to input a question.
+      - If user inputs "exit", end loop.
+      - Else insert the question into SQLite DB.
+      - Query ChromaDB to retrieve relevant answers.
+      - Display answers.
+   9. Close database connection and end program.
+
+6. Advantages
+
+- Combines structured and unstructured data for comprehensive question answering.
+- Dynamic learning by saving new questions.
+- Lightweight and easy to extend with more courses and documents.
+- Enables semantic search with ChromaDB on course materials.
+
+
+7. Conclusion
+
+This system is a prototype for a university question-answering platform that integrates structured course metadata and syllabus content. It demonstrates the use of SQLite for relational data management and ChromaDB for semantic text indexing and querying, allowing users to interactively query their course content for quick answers.
