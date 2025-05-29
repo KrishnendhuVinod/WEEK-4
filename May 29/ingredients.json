@@ -1,0 +1,42 @@
+[
+  {
+    "name": "tofu",
+    "calories": 72,
+    "protein": 7.5,
+    "carbs": 2,
+    "fat": 4,
+    "vegan": true
+  },
+  {
+    "name": "broccoli",
+    "calories": 55,
+    "protein": 3.7,
+    "carbs": 11.1,
+    "fat": 0.6,
+    "vegan": true
+  },
+  {
+    "name": "brown rice",
+    "calories": 216,
+    "protein": 5,
+    "carbs": 45,
+    "fat": 1.8,
+    "vegan": true
+  },
+  {
+    "name": "olive oil",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "vegan": true
+  },
+  {
+    "name": "chicken",
+    "calories": 239,
+    "protein": 27,
+    "carbs": 0,
+    "fat": 14,
+    "vegan": false
+  }
+]
